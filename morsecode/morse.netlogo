@@ -1,0 +1,41 @@
+to-report split [m]
+  let n []
+  let t []
+  let i 0
+  while [i < length m] [
+    let a item i m
+    ifelse a !=  " " [
+      set t lput a t
+    ]
+    [
+      set n lput (reduce word t)  n
+      set t []
+    ]
+   set i i + 1
+  ]
+  set n lput t n
+  
+  report n
+end
+
+to-report f [s]
+  let n []
+  let m split ".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --.."
+  let x split "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
+  
+  let i 0
+  
+  while [i < length s][
+    let a item i s
+    ifelse a = " "[
+      set n lput a n
+    ]
+    [
+      set n lput item position a x m n
+    ]
+    
+    set i i + 1
+  ]
+  
+  report reduce word n
+end
